@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-[#101012] text-zinc-100 font-sans antialiased;
+    color-scheme: dark;
+  }
+}
+
+/* Custom delicate scrollbars */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* Prose overrides for Markdown preview */
+.prose h1, .prose h2, .prose h3, .prose h4 {
+  color: #f4f4f5;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.prose p {
+  color: #d4d4d8;
+  line-height: 1.7;
+}
+
+.prose strong {
+  color: #fafafa;
+}
+
+.prose code {
+  color: #e9d5ff;
+  background-color: rgba(147, 51, 234, 0.15);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+  font-family: 'JetBrains Mono', monospace;
+}
