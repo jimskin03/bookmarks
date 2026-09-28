@@ -32,15 +32,16 @@ const sharedCookieStorage = {
   setItem(key: string, value: string): void {
     if (typeof window === 'undefined') return
     const domain = sharedCookieDomain()
-    document.cookie = `${key}=; Max-Age=0; Path=/; Secure; SameSite=Lax`
-    document.cookie = `${key}=${encodeURIComponent(value)}; Max-Age=31536000; Path=/${domain}; Secure; SameSite=Lax`
+    const secureFlag = window.location.protocol === 'https:' ? '; Secure' : ''
+    document.cookie = `${key}=; Max-Age=0; Path=/${domain}${secureFlag}; SameSite=Lax`
+    document.cookie = `${key}=${encodeURIComponent(value)}; Max-Age=31536000; Path=/${domain}${secureFlag}; SameSite=Lax`
     localStorage.setItem(key, value)
   },
   removeItem(key: string): void {
     if (typeof window === 'undefined') return
     const domain = sharedCookieDomain()
-    document.cookie = `${key}=; Max-Age=0; Path=/; Secure; SameSite=Lax`
-    document.cookie = `${key}=; Max-Age=0; Path=/${domain}; Secure; SameSite=Lax`
+    const secureFlag = window.location.protocol === 'https:' ? '; Secure' : ''
+    document.cookie = `${key}=; Max-Age=0; Path=/${domain}${secureFlag}; SameSite=Lax`
     localStorage.removeItem(key)
   },
 }

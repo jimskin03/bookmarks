@@ -139,12 +139,17 @@ export const App: React.FC = () => {
       {syncStatus === 'schema_missing' && (
         <div className="bg-amber-950/80 border-b border-amber-800/70 px-4 py-2 text-xs text-amber-200 flex items-center justify-between select-none">
           <div className="flex items-center gap-2">
-            <span className="font-semibold text-amber-300">Cloud Setup Required:</span>
+            <span className="font-semibold text-amber-300">Cloud Setup Notice:</span>
             <span>
-              The <code>bookmarks</code> schema is not yet applied or exposed in your Supabase project (PGRST106).
-              Execute <code>supabase/migrations/20260928_init_bookmarks.sql</code> in your Supabase SQL Editor to enable cloud sync. Notes are currently stored in your isolated local vault.
+              The <code>bookmarks</code> schema is being detected. If you just applied the migration in Supabase, click Retry to connect.
             </span>
           </div>
+          <button
+            onClick={() => refreshVault()}
+            className="px-2.5 py-1 bg-amber-800 hover:bg-amber-700 text-amber-100 rounded text-xs font-medium transition-colors cursor-pointer shrink-0 ml-4"
+          >
+            Retry Connection
+          </button>
         </div>
       )}
 

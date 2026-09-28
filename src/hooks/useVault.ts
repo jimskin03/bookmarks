@@ -60,7 +60,7 @@ export function useVault(isDemoMode: boolean, userId?: string | null) {
     } finally {
       setIsLoading(false)
     }
-  }, [isDemoMode])
+  }, [isDemoMode, userId])
 
   // React to mode or user login/switch
   useEffect(() => {
