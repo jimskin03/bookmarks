@@ -46,6 +46,15 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
     }
   }, [note?.id])
 
+  // Filter notes for autocomplete
+  const autocompleteSuggestions = useMemo(() => {
+    if (!showAutocomplete || !note) return []
+    const q = autocompleteQuery.toLowerCase().trim()
+    return allNotes
+      .filter(n => n.id !== note.id && !n.deleted_at && (q === '' || n.title.toLowerCase().includes(q)))
+      .slice(0, 7)
+  }, [showAutocomplete, autocompleteQuery, allNotes, note?.id])
+
   if (!note) {
     return (
       <div className="flex-1 flex flex-col items-center justify-center text-zinc-500 select-none bg-[#121214]">
@@ -57,11 +66,13 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
   }
 
   const handleTitleChange = (newTitle: string) => {
+    if (!note) return
     setTitle(newTitle)
     onUpdateNote({ id: note.id, title: newTitle })
   }
 
   const handleContentChange = (newContent: string) => {
+    if (!note) return
     setContent(newContent)
     onUpdateNote({ id: note.id, content: newContent })
 
@@ -83,15 +94,6 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({
     }
     setShowAutocomplete(false)
   }
-
-  // Filter notes for autocomplete
-  const autocompleteSuggestions = useMemo(() => {
-    if (!showAutocomplete) return []
-    const q = autocompleteQuery.toLowerCase().trim()
-    return allNotes
-      .filter(n => n.id !== note.id && !n.deleted_at && (q === '' || n.title.toLowerCase().includes(q)))
-      .slice(0, 7)
-  }, [showAutocomplete, autocompleteQuery, allNotes, note.id])
 
   // Insert selected note into textarea
   const insertWikiLink = (targetTitle: string) => {
