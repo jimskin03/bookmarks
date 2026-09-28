@@ -5,7 +5,7 @@ import { folderService } from '@/features/folders/folderService'
 import { tagService } from '@/features/tags/tagService'
 import { vaultStorage } from '@/lib/storage/vaultStorage'
 
-export function useVault(isDemoMode: boolean) {
+export function useVault(isDemoMode: boolean, userId?: string | null) {
   const [vault, setVault] = useState<Vault | null>(null)
   const [folders, setFolders] = useState<Folder[]>([])
   const [notes, setNotes] = useState<Note[]>([])
@@ -25,7 +25,7 @@ export function useVault(isDemoMode: boolean) {
 
   const autosaveTimerRef = useRef<NodeJS.Timeout | null>(null)
 
-  // Refresh all vault data
+  // Refresh all vault data for current user/mode
   const refreshVault = useCallback(async () => {
     try {
       const v = await vaultStorage.getVault()
@@ -40,10 +40,19 @@ export function useVault(isDemoMode: boolean) {
       const t = await tagService.getTags()
       setTags(t)
 
-      // Set initial active note if none selected
-      if (!activeNoteId && n.length > 0) {
-        setActiveNoteId(n[0].id)
-        setMindMapRootId(n[0].id)
+      if (vaultStorage.getIsSchemaMissing()) {
+        setSyncStatus('schema_missing')
+      } else {
+        setSyncStatus(isDemoMode ? 'local_demo' : 'saved')
+      }
+
+      // Maintain active note or select first
+      if (n.length > 0) {
+        setActiveNoteId(prev => (prev && n.some(item => item.id === prev) ? prev : n[0].id))
+        setMindMapRootId(prev => (prev && n.some(item => item.id === prev) ? prev : n[0].id))
+      } else {
+        setActiveNoteId(null)
+        setMindMapRootId(null)
       }
     } catch (err) {
       console.error('Failed to load vault data:', err)
@@ -51,11 +60,17 @@ export function useVault(isDemoMode: boolean) {
     } finally {
       setIsLoading(false)
     }
-  }, [activeNoteId])
+  }, [isDemoMode])
 
+  // React to mode or user login/switch
   useEffect(() => {
+    vaultStorage.setDemoMode(isDemoMode)
+    if (!isDemoMode && userId) {
+      vaultStorage.setCurrentUser(userId)
+    }
+    setActiveNoteId(null)
     refreshVault()
-  }, [refreshVault])
+  }, [isDemoMode, userId, refreshVault])
 
   const activeNote = notes.find(n => n.id === activeNoteId) || null
 
@@ -78,7 +93,11 @@ export function useVault(isDemoMode: boolean) {
       await refreshVault()
       setActiveNoteId(newNote.id)
       setViewMode('editor')
-      setSyncStatus(isDemoMode ? 'local_demo' : 'saved')
+      if (vaultStorage.getIsSchemaMissing()) {
+        setSyncStatus('schema_missing')
+      } else {
+        setSyncStatus(isDemoMode ? 'local_demo' : 'saved')
+      }
       return newNote
     } catch (err) {
       console.error('Create note failed:', err)
@@ -106,7 +125,11 @@ export function useVault(isDemoMode: boolean) {
           await noteService.updateNote(merged)
           const updatedTags = await tagService.getTags()
           setTags(updatedTags)
-          setSyncStatus(isDemoMode ? 'local_demo' : 'saved')
+          if (vaultStorage.getIsSchemaMissing()) {
+            setSyncStatus('schema_missing')
+          } else {
+            setSyncStatus(isDemoMode ? 'local_demo' : 'saved')
+          }
         }
       } catch (err) {
         console.error('Autosave error:', err)
@@ -148,7 +171,6 @@ export function useVault(isDemoMode: boolean) {
       await folderService.deleteFolder(id)
       const updatedFolders = await folderService.getFolders()
       setFolders(updatedFolders)
-      // Update notes that belonged to this folder
       setNotes(prev => prev.map(n => n.folder_id === id ? { ...n, folder_id: null } : n))
     } catch (err) {
       console.error('Delete folder failed:', err)

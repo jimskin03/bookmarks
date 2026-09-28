@@ -141,5 +141,5 @@ export interface MindMapNode {
 
 export type ViewMode = 'editor' | 'graph' | 'mindmap'
 export type GraphScope = 'global' | 'local'
-export type SyncStatus = 'saved' | 'saving' | 'offline' | 'error' | 'local_demo'
+export type SyncStatus = 'saved' | 'saving' | 'offline' | 'error' | 'local_demo' | 'schema_missing'
 export type ActiveTab = 'notes' | 'tags' | 'trash' | 'settings'

@@ -30,14 +30,14 @@ const safeStorage = {
   }
 }
 
-// High-quality initial seed data showcasing the full power of Bookmarks
-const SEED_VAULT_ID = 'v0000000-0000-0000-0000-000000000001'
-const SEED_USER_ID = 'u0000000-0000-0000-0000-000000000001'
+// Demo Vault seed data
+const DEMO_VAULT_ID = 'demo-vault-0001'
+const DEMO_USER_ID = 'demo-user-0001'
 
-const INITIAL_FOLDERS: Folder[] = [
+const DEMO_FOLDERS: Folder[] = [
   {
-    id: 'f1000000-0000-0000-0000-000000000001',
-    vault_id: SEED_VAULT_ID,
+    id: 'f-demo-01',
+    vault_id: DEMO_VAULT_ID,
     parent_id: null,
     name: 'Research',
     sort_order: 0,
@@ -45,17 +45,17 @@ const INITIAL_FOLDERS: Folder[] = [
     updated_at: '2026-09-20T10:00:00Z',
   },
   {
-    id: 'f1000000-0000-0000-0000-000000000002',
-    vault_id: SEED_VAULT_ID,
-    parent_id: 'f1000000-0000-0000-0000-000000000001',
+    id: 'f-demo-02',
+    vault_id: DEMO_VAULT_ID,
+    parent_id: 'f-demo-01',
     name: 'AI & Agents',
     sort_order: 0,
     created_at: '2026-09-21T10:00:00Z',
     updated_at: '2026-09-21T10:00:00Z',
   },
   {
-    id: 'f1000000-0000-0000-0000-000000000003',
-    vault_id: SEED_VAULT_ID,
+    id: 'f-demo-03',
+    vault_id: DEMO_VAULT_ID,
     parent_id: null,
     name: 'Projects',
     sort_order: 1,
@@ -63,8 +63,8 @@ const INITIAL_FOLDERS: Folder[] = [
     updated_at: '2026-09-20T10:00:00Z',
   },
   {
-    id: 'f1000000-0000-0000-0000-000000000004',
-    vault_id: SEED_VAULT_ID,
+    id: 'f-demo-04',
+    vault_id: DEMO_VAULT_ID,
     parent_id: null,
     name: 'Philosophy',
     sort_order: 2,
@@ -73,11 +73,11 @@ const INITIAL_FOLDERS: Folder[] = [
   }
 ]
 
-const INITIAL_NOTES: Note[] = [
+const DEMO_NOTES: Note[] = [
   {
-    id: 'n1000000-0000-0000-0000-000000000001',
-    vault_id: SEED_VAULT_ID,
-    folder_id: 'f1000000-0000-0000-0000-000000000002',
+    id: 'n-demo-01',
+    vault_id: DEMO_VAULT_ID,
+    folder_id: 'f-demo-02',
     title: 'Artificial Intelligence',
     slug: 'artificial-intelligence',
     content: `# Artificial Intelligence
@@ -98,9 +98,9 @@ Key sub-domains under investigation:
     deleted_at: null,
   },
   {
-    id: 'n1000000-0000-0000-0000-000000000002',
-    vault_id: SEED_VAULT_ID,
-    folder_id: 'f1000000-0000-0000-0000-000000000002',
+    id: 'n-demo-02',
+    vault_id: DEMO_VAULT_ID,
+    folder_id: 'f-demo-02',
     title: 'AI Agents',
     slug: 'ai-agents',
     content: `# AI Agents
@@ -123,9 +123,9 @@ See also: [[Agent Economics]], [[Neural Networks]].
     deleted_at: null,
   },
   {
-    id: 'n1000000-0000-0000-0000-000000000003',
-    vault_id: SEED_VAULT_ID,
-    folder_id: 'f1000000-0000-0000-0000-000000000003',
+    id: 'n-demo-03',
+    vault_id: DEMO_VAULT_ID,
+    folder_id: 'f-demo-03',
     title: 'Eastern Paradise',
     slug: 'eastern-paradise',
     content: `# Eastern Paradise
@@ -151,9 +151,9 @@ Connections:
     deleted_at: null,
   },
   {
-    id: 'n1000000-0000-0000-0000-000000000004',
-    vault_id: SEED_VAULT_ID,
-    folder_id: 'f1000000-0000-0000-0000-000000000003',
+    id: 'n-demo-04',
+    vault_id: DEMO_VAULT_ID,
+    folder_id: 'f-demo-03',
     title: 'JEV',
     slug: 'jev',
     content: `# JEV (Joint Economic Value)
@@ -174,9 +174,9 @@ Related notes: [[Agent Economics]], [[Eastern Paradise]].
     deleted_at: null,
   },
   {
-    id: 'n1000000-0000-0000-0000-000000000005',
-    vault_id: SEED_VAULT_ID,
-    folder_id: 'f1000000-0000-0000-0000-000000000001',
+    id: 'n-demo-05',
+    vault_id: DEMO_VAULT_ID,
+    folder_id: 'f-demo-01',
     title: 'Agent Economics',
     slug: 'agent-economics',
     content: `# Agent Economics
@@ -194,9 +194,9 @@ Core references: [[Artificial Intelligence]], [[JEV]].
     deleted_at: null,
   },
   {
-    id: 'n1000000-0000-0000-0000-000000000006',
-    vault_id: SEED_VAULT_ID,
-    folder_id: 'f1000000-0000-0000-0000-000000000001',
+    id: 'n-demo-06',
+    vault_id: DEMO_VAULT_ID,
+    folder_id: 'f-demo-01',
     title: 'Neural Networks',
     slug: 'neural-networks',
     content: `# Neural Networks
@@ -215,9 +215,9 @@ Connects to:
     deleted_at: null,
   },
   {
-    id: 'n1000000-0000-0000-0000-000000000007',
-    vault_id: SEED_VAULT_ID,
-    folder_id: 'f1000000-0000-0000-0000-000000000001',
+    id: 'n-demo-07',
+    vault_id: DEMO_VAULT_ID,
+    folder_id: 'f-demo-01',
     title: 'Machine Learning',
     slug: 'machine-learning',
     content: `# Machine Learning
@@ -237,9 +237,9 @@ Hierarchy:
     deleted_at: null,
   },
   {
-    id: 'n1000000-0000-0000-0000-000000000008',
-    vault_id: SEED_VAULT_ID,
-    folder_id: 'f1000000-0000-0000-0000-000000000004',
+    id: 'n-demo-08',
+    vault_id: DEMO_VAULT_ID,
+    folder_id: 'f-demo-04',
     title: 'Knowledge Vault Architecture',
     slug: 'knowledge-vault-architecture',
     content: `# Knowledge Vault Architecture
@@ -259,11 +259,13 @@ Principles for networked thought:
 
 export class VaultStorage {
   private static instance: VaultStorage
-  private vaultId: string = SEED_VAULT_ID
+  private vaultId: string | null = null
+  private currentUserId: string | null = null
   private isDemoMode: boolean = false
+  private schemaMissing: boolean = false
 
   private constructor() {
-    this.initLocalDataIfEmpty()
+    this.initDemoDataIfEmpty()
   }
 
   public static getInstance(): VaultStorage {
@@ -275,44 +277,65 @@ export class VaultStorage {
 
   public setDemoMode(demo: boolean) {
     this.isDemoMode = demo
+    if (demo) {
+      this.currentUserId = 'demo'
+      this.vaultId = DEMO_VAULT_ID
+      this.initDemoDataIfEmpty()
+    } else {
+      this.currentUserId = null
+      this.vaultId = null
+    }
+  }
+
+  public setCurrentUser(userId: string | null) {
+    this.currentUserId = userId
+    this.vaultId = null
   }
 
   public getIsDemoMode(): boolean {
     return this.isDemoMode
   }
 
+  public getIsSchemaMissing(): boolean {
+    return this.schemaMissing
+  }
+
+  public getActiveUserId(): string {
+    if (this.isDemoMode) return 'demo'
+    return this.currentUserId || 'anonymous'
+  }
+
   public getActiveVaultId(): string {
-    return this.vaultId
+    return this.vaultId || (this.isDemoMode ? DEMO_VAULT_ID : `vault-${this.getActiveUserId()}`)
   }
 
-  public setActiveVaultId(id: string) {
-    this.vaultId = id
+  private scopeKey(table: string): string {
+    return `${STORAGE_KEY_PREFIX}${this.getActiveUserId()}_${table}`
   }
 
-  // --- LOCAL REPOSITORY METHODS ---
-
-  private initLocalDataIfEmpty() {
-    const existingNotes = safeStorage.getItem(STORAGE_KEY_PREFIX + 'notes')
-    if (!existingNotes) {
-      safeStorage.setItem(STORAGE_KEY_PREFIX + 'vaults', JSON.stringify([{
-        id: SEED_VAULT_ID,
-        user_id: SEED_USER_ID,
-        name: 'Personal Vault',
-        slug: 'personal-vault',
+  // Initialize demo data strictly within the 'demo' namespace
+  private initDemoDataIfEmpty() {
+    const demoKey = `${STORAGE_KEY_PREFIX}demo_notes`
+    const existing = safeStorage.getItem(demoKey)
+    if (!existing) {
+      safeStorage.setItem(`${STORAGE_KEY_PREFIX}demo_vaults`, JSON.stringify([{
+        id: DEMO_VAULT_ID,
+        user_id: DEMO_USER_ID,
+        name: 'Demo Vault',
+        slug: 'demo-vault',
         created_at: '2026-09-20T00:00:00Z',
         updated_at: '2026-09-28T19:00:00Z'
       }]))
-      safeStorage.setItem(STORAGE_KEY_PREFIX + 'folders', JSON.stringify(INITIAL_FOLDERS))
-      safeStorage.setItem(STORAGE_KEY_PREFIX + 'notes', JSON.stringify(INITIAL_NOTES))
-
-      // Generate seed links
-      this.reconcileAllLocalLinks(INITIAL_NOTES)
+      safeStorage.setItem(`${STORAGE_KEY_PREFIX}demo_folders`, JSON.stringify(DEMO_FOLDERS))
+      safeStorage.setItem(demoKey, JSON.stringify(DEMO_NOTES))
+      this.reconcileLocalLinks(DEMO_NOTES, 'demo')
     }
   }
 
   public async getVault(): Promise<Vault> {
     const user = (await supabase.auth.getUser()).data.user
     if (user && !this.isDemoMode) {
+      this.currentUserId = user.id
       try {
         const { data, error } = await bookmarksDb
           .from('vaults')
@@ -321,12 +344,23 @@ export class VaultStorage {
           .limit(1)
           .maybeSingle()
 
-        if (!error && data) {
+        if (error) {
+          if (error.code === 'PGRST106' || error.message?.includes('schema')) {
+            this.schemaMissing = true
+            console.error('Supabase schema "bookmarks" not exposed to PostgREST:', error.message)
+          }
+          throw error
+        }
+
+        this.schemaMissing = false
+
+        if (data) {
           this.vaultId = data.id
+          safeStorage.setItem(this.scopeKey('vaults'), JSON.stringify([data]))
           return data
         }
 
-        // Provision default vault if none exists for this user
+        // Auto-provision personal vault for new user
         const { data: newVault, error: createError } = await bookmarksDb
           .from('vaults')
           .insert({
@@ -339,29 +373,32 @@ export class VaultStorage {
 
         if (!createError && newVault) {
           this.vaultId = newVault.id
+          safeStorage.setItem(this.scopeKey('vaults'), JSON.stringify([newVault]))
           return newVault
         }
-      } catch (err) {
-        console.warn('Falling back to local vault due to:', err)
+      } catch (err: any) {
+        console.warn('Falling back to user-scoped local storage due to:', err?.message || err)
       }
     }
 
-    // Local fallback
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'vaults')
+    // Isolated local fallback
+    const raw = safeStorage.getItem(this.scopeKey('vaults'))
     const list: Vault[] = raw ? JSON.parse(raw) : []
-    return list[0] || {
-      id: SEED_VAULT_ID,
-      user_id: SEED_USER_ID,
-      name: 'Personal Vault',
+    const fallbackVault: Vault = list[0] || {
+      id: this.getActiveVaultId(),
+      user_id: this.getActiveUserId(),
+      name: this.isDemoMode ? 'Demo Vault' : 'Personal Vault',
       slug: 'personal-vault',
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString()
     }
+    this.vaultId = fallbackVault.id
+    return fallbackVault
   }
 
   public async getFolders(): Promise<Folder[]> {
     const user = (await supabase.auth.getUser()).data.user
-    if (user && !this.isDemoMode) {
+    if (user && !this.isDemoMode && this.vaultId && !this.schemaMissing) {
       try {
         const { data, error } = await bookmarksDb
           .from('folders')
@@ -369,13 +406,16 @@ export class VaultStorage {
           .eq('vault_id', this.vaultId)
           .order('sort_order', { ascending: true })
 
-        if (!error && data) return data
+        if (!error && data) {
+          safeStorage.setItem(this.scopeKey('folders'), JSON.stringify(data))
+          return data
+        }
       } catch (err) {
-        console.warn('Error fetching cloud folders, using local:', err)
+        console.warn('Error fetching cloud folders, using local user cache:', err)
       }
     }
 
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'folders')
+    const raw = safeStorage.getItem(this.scopeKey('folders'))
     return raw ? JSON.parse(raw) : []
   }
 
@@ -383,7 +423,7 @@ export class VaultStorage {
     const now = new Date().toISOString()
     const newFolder: Folder = {
       id: folder.id || `f-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`,
-      vault_id: folder.vault_id || this.vaultId,
+      vault_id: folder.vault_id || this.getActiveVaultId(),
       parent_id: folder.parent_id,
       name: folder.name,
       sort_order: folder.sort_order ?? 0,
@@ -392,16 +432,15 @@ export class VaultStorage {
     }
 
     const user = (await supabase.auth.getUser()).data.user
-    if (user && !this.isDemoMode) {
+    if (user && !this.isDemoMode && !this.schemaMissing) {
       try {
         await bookmarksDb.from('folders').upsert(newFolder)
       } catch (err) {
-        console.warn('Failed cloud folder upsert:', err)
+        console.warn('Cloud folder upsert failed:', err)
       }
     }
 
-    // Update local storage
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'folders')
+    const raw = safeStorage.getItem(this.scopeKey('folders'))
     const folders: Folder[] = raw ? JSON.parse(raw) : []
     const idx = folders.findIndex(f => f.id === newFolder.id)
     if (idx >= 0) {
@@ -409,29 +448,29 @@ export class VaultStorage {
     } else {
       folders.push(newFolder)
     }
-    safeStorage.setItem(STORAGE_KEY_PREFIX + 'folders', JSON.stringify(folders))
+    safeStorage.setItem(this.scopeKey('folders'), JSON.stringify(folders))
     return newFolder
   }
 
   public async deleteFolder(folderId: string): Promise<void> {
     const user = (await supabase.auth.getUser()).data.user
-    if (user && !this.isDemoMode) {
+    if (user && !this.isDemoMode && !this.schemaMissing) {
       try {
         await bookmarksDb.from('folders').delete().eq('id', folderId)
       } catch (err) {
-        console.warn('Failed cloud folder delete:', err)
+        console.warn('Cloud folder delete failed:', err)
       }
     }
 
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'folders')
+    const raw = safeStorage.getItem(this.scopeKey('folders'))
     const folders: Folder[] = raw ? JSON.parse(raw) : []
     const updated = folders.filter(f => f.id !== folderId && f.parent_id !== folderId)
-    safeStorage.setItem(STORAGE_KEY_PREFIX + 'folders', JSON.stringify(updated))
+    safeStorage.setItem(this.scopeKey('folders'), JSON.stringify(updated))
   }
 
   public async getNotes(includeDeleted = false): Promise<Note[]> {
     const user = (await supabase.auth.getUser()).data.user
-    if (user && !this.isDemoMode) {
+    if (user && !this.isDemoMode && this.vaultId && !this.schemaMissing) {
       try {
         let query = bookmarksDb
           .from('notes')
@@ -444,14 +483,47 @@ export class VaultStorage {
         }
 
         const { data, error } = await query
-        if (!error && data) return data
+        if (!error && data) {
+          safeStorage.setItem(this.scopeKey('notes'), JSON.stringify(data))
+          return data
+        }
       } catch (err) {
-        console.warn('Error fetching cloud notes, using local:', err)
+        console.warn('Error fetching cloud notes, using user local cache:', err)
       }
     }
 
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'notes')
-    const notes: Note[] = raw ? JSON.parse(raw) : []
+    // User-scoped local fallback
+    const raw = safeStorage.getItem(this.scopeKey('notes'))
+    let notes: Note[] = raw ? JSON.parse(raw) : []
+
+    // If an authenticated user has zero notes, provide an initial welcome note in their private vault
+    if (!this.isDemoMode && this.currentUserId && notes.length === 0 && !raw) {
+      const initialUserNote: Note = {
+        id: `n-${Date.now()}`,
+        vault_id: this.getActiveVaultId(),
+        folder_id: null,
+        title: 'Welcome to your Personal Vault',
+        slug: 'welcome-to-your-personal-vault',
+        content: `# Welcome to your Personal Vault
+
+This is your private cloud-synced knowledge vault. Notes you write here belong exclusively to your CryptGreg account.
+
+### How to use Bookmarks:
+- Create references to new or existing notes by typing \`[[Note Title]]\`.
+- Categorize your knowledge with \`#tags\`.
+- Click **Graph** in the top navigation to see your interactive knowledge graph.
+- Click **Mind Map** to view and organize hierarchical relationships.
+
+Happy thinking!`,
+        metadata: { tags: ['welcome', 'getting-started'] },
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+        deleted_at: null
+      }
+      notes = [initialUserNote]
+      safeStorage.setItem(this.scopeKey('notes'), JSON.stringify(notes))
+    }
+
     return includeDeleted ? notes : notes.filter(n => !n.deleted_at)
   }
 
@@ -468,7 +540,7 @@ export class VaultStorage {
 
     const updatedNote: Note = {
       id,
-      vault_id: note.vault_id || this.vaultId,
+      vault_id: note.vault_id || this.getActiveVaultId(),
       folder_id: note.folder_id ?? null,
       title: note.title.trim() || 'Untitled',
       slug,
@@ -483,7 +555,7 @@ export class VaultStorage {
     }
 
     const user = (await supabase.auth.getUser()).data.user
-    if (user && !this.isDemoMode) {
+    if (user && !this.isDemoMode && !this.schemaMissing) {
       try {
         await bookmarksDb.from('notes').upsert(updatedNote)
       } catch (err) {
@@ -491,8 +563,8 @@ export class VaultStorage {
       }
     }
 
-    // Update local storage
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'notes')
+    // Save in user-scoped local storage
+    const raw = safeStorage.getItem(this.scopeKey('notes'))
     const notes: Note[] = raw ? JSON.parse(raw) : []
     const idx = notes.findIndex(n => n.id === updatedNote.id)
     if (idx >= 0) {
@@ -500,12 +572,10 @@ export class VaultStorage {
     } else {
       notes.unshift(updatedNote)
     }
-    safeStorage.setItem(STORAGE_KEY_PREFIX + 'notes', JSON.stringify(notes))
+    safeStorage.setItem(this.scopeKey('notes'), JSON.stringify(notes))
 
     // Reconcile links
     await this.reconcileNoteLinks(updatedNote, notes)
-
-    // Save version snapshot periodically
     this.createVersionSnapshot(updatedNote)
 
     return updatedNote
@@ -514,7 +584,7 @@ export class VaultStorage {
   public async softDeleteNote(noteId: string): Promise<void> {
     const now = new Date().toISOString()
     const user = (await supabase.auth.getUser()).data.user
-    if (user && !this.isDemoMode) {
+    if (user && !this.isDemoMode && !this.schemaMissing) {
       try {
         await bookmarksDb.from('notes').update({ deleted_at: now }).eq('id', noteId)
       } catch (err) {
@@ -522,19 +592,19 @@ export class VaultStorage {
       }
     }
 
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'notes')
+    const raw = safeStorage.getItem(this.scopeKey('notes'))
     const notes: Note[] = raw ? JSON.parse(raw) : []
     const note = notes.find(n => n.id === noteId)
     if (note) {
       note.deleted_at = now
       note.updated_at = now
-      safeStorage.setItem(STORAGE_KEY_PREFIX + 'notes', JSON.stringify(notes))
+      safeStorage.setItem(this.scopeKey('notes'), JSON.stringify(notes))
     }
   }
 
   public async restoreNote(noteId: string): Promise<void> {
     const user = (await supabase.auth.getUser()).data.user
-    if (user && !this.isDemoMode) {
+    if (user && !this.isDemoMode && !this.schemaMissing) {
       try {
         await bookmarksDb.from('notes').update({ deleted_at: null }).eq('id', noteId)
       } catch (err) {
@@ -542,19 +612,19 @@ export class VaultStorage {
       }
     }
 
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'notes')
+    const raw = safeStorage.getItem(this.scopeKey('notes'))
     const notes: Note[] = raw ? JSON.parse(raw) : []
     const note = notes.find(n => n.id === noteId)
     if (note) {
       note.deleted_at = null
       note.updated_at = new Date().toISOString()
-      safeStorage.setItem(STORAGE_KEY_PREFIX + 'notes', JSON.stringify(notes))
+      safeStorage.setItem(this.scopeKey('notes'), JSON.stringify(notes))
     }
   }
 
   public async permanentlyDeleteNote(noteId: string): Promise<void> {
     const user = (await supabase.auth.getUser()).data.user
-    if (user && !this.isDemoMode) {
+    if (user && !this.isDemoMode && !this.schemaMissing) {
       try {
         await bookmarksDb.from('notes').delete().eq('id', noteId)
       } catch (err) {
@@ -562,36 +632,38 @@ export class VaultStorage {
       }
     }
 
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'notes')
+    const raw = safeStorage.getItem(this.scopeKey('notes'))
     const notes: Note[] = raw ? JSON.parse(raw) : []
     const updated = notes.filter(n => n.id !== noteId)
-    safeStorage.setItem(STORAGE_KEY_PREFIX + 'notes', JSON.stringify(updated))
+    safeStorage.setItem(this.scopeKey('notes'), JSON.stringify(updated))
 
-    // Remove any links connected to this note
-    const rawLinks = safeStorage.getItem(STORAGE_KEY_PREFIX + 'links')
+    const rawLinks = safeStorage.getItem(this.scopeKey('links'))
     const links: NoteLink[] = rawLinks ? JSON.parse(rawLinks) : []
     const filteredLinks = links.filter(l => l.source_note_id !== noteId && l.target_note_id !== noteId)
-    safeStorage.setItem(STORAGE_KEY_PREFIX + 'links', JSON.stringify(filteredLinks))
+    safeStorage.setItem(this.scopeKey('links'), JSON.stringify(filteredLinks))
   }
 
   // --- LINKS RECONCILIATION ---
 
   public async getLinks(): Promise<NoteLink[]> {
     const user = (await supabase.auth.getUser()).data.user
-    if (user && !this.isDemoMode) {
+    if (user && !this.isDemoMode && this.vaultId && !this.schemaMissing) {
       try {
         const { data, error } = await bookmarksDb
           .from('note_links')
           .select('*')
           .eq('vault_id', this.vaultId)
 
-        if (!error && data) return data
+        if (!error && data) {
+          safeStorage.setItem(this.scopeKey('links'), JSON.stringify(data))
+          return data
+        }
       } catch (err) {
         console.warn('Cloud links fetch failed:', err)
       }
     }
 
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'links')
+    const raw = safeStorage.getItem(this.scopeKey('links'))
     return raw ? JSON.parse(raw) : []
   }
 
@@ -612,18 +684,14 @@ export class VaultStorage {
       }
     }
 
-    // Fetch existing links for this source note
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'links')
+    const raw = safeStorage.getItem(this.scopeKey('links'))
     let allLinks: NoteLink[] = raw ? JSON.parse(raw) : []
-
-    // Remove existing links from this note
     allLinks = allLinks.filter(l => l.source_note_id !== note.id)
 
-    // Add new links
     for (const targetId of newTargetNoteIds) {
       allLinks.push({
         id: `l-${note.id}-${targetId}`,
-        vault_id: this.vaultId,
+        vault_id: this.getActiveVaultId(),
         source_note_id: note.id,
         target_note_id: targetId,
         link_text: null,
@@ -631,16 +699,15 @@ export class VaultStorage {
       })
     }
 
-    safeStorage.setItem(STORAGE_KEY_PREFIX + 'links', JSON.stringify(allLinks))
+    safeStorage.setItem(this.scopeKey('links'), JSON.stringify(allLinks))
 
-    // Reconcile to Supabase if authenticated
     const user = (await supabase.auth.getUser()).data.user
-    if (user && !this.isDemoMode) {
+    if (user && !this.isDemoMode && !this.schemaMissing) {
       try {
         await bookmarksDb.from('note_links').delete().eq('source_note_id', note.id)
         if (newTargetNoteIds.size > 0) {
           const insertPayload = Array.from(newTargetNoteIds).map(targetId => ({
-            vault_id: this.vaultId,
+            vault_id: this.vaultId || this.getActiveVaultId(),
             source_note_id: note.id,
             target_note_id: targetId
           }))
@@ -652,7 +719,7 @@ export class VaultStorage {
     }
   }
 
-  private reconcileAllLocalLinks(notes: Note[]) {
+  private reconcileLocalLinks(notes: Note[], userId: string) {
     const allLinks: NoteLink[] = []
     const titleToNoteMap = new Map<string, Note>()
     for (const n of notes) {
@@ -668,7 +735,7 @@ export class VaultStorage {
           if (!allLinks.some(l => l.id === linkId)) {
             allLinks.push({
               id: linkId,
-              vault_id: this.vaultId,
+              vault_id: this.getActiveVaultId(),
               source_note_id: note.id,
               target_note_id: target.id,
               link_text: pl.alias || null,
@@ -678,18 +745,18 @@ export class VaultStorage {
         }
       }
     }
-    safeStorage.setItem(STORAGE_KEY_PREFIX + 'links', JSON.stringify(allLinks))
+    safeStorage.setItem(`${STORAGE_KEY_PREFIX}${userId}_links`, JSON.stringify(allLinks))
   }
 
   // --- VERSION HISTORY ---
 
   public async getVersions(noteId: string): Promise<NoteVersion[]> {
-    const raw = safeStorage.getItem(STORAGE_KEY_PREFIX + 'versions_' + noteId)
+    const raw = safeStorage.getItem(this.scopeKey(`versions_${noteId}`))
     return raw ? JSON.parse(raw) : []
   }
 
   private createVersionSnapshot(note: Note) {
-    const key = STORAGE_KEY_PREFIX + 'versions_' + note.id
+    const key = this.scopeKey(`versions_${note.id}`)
     const raw = safeStorage.getItem(key)
     const versions: NoteVersion[] = raw ? JSON.parse(raw) : []
 
@@ -703,7 +770,7 @@ export class VaultStorage {
         content: note.content,
         metadata: note.metadata,
         created_at: new Date().toISOString(),
-        created_by: SEED_USER_ID
+        created_by: this.getActiveUserId()
       }
       versions.unshift(newVersion)
       if (versions.length > 20) versions.pop()
@@ -728,7 +795,7 @@ export class VaultStorage {
     for (const [name, count] of tagCountMap.entries()) {
       tagsList.push({
         id: `tag-${name}`,
-        vault_id: this.vaultId,
+        vault_id: this.getActiveVaultId(),
         name,
         created_at: new Date().toISOString(),
         count

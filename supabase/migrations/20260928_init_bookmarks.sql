@@ -7,6 +7,10 @@ create schema if not exists bookmarks;
 -- Grant usage to standard Supabase roles
 grant usage on schema bookmarks to postgres, anon, authenticated, service_role;
 
+-- Expose bookmarks schema alongside existing CryptGreg services in PostgREST
+alter role authenticator set pgrst.db_schemas = 'public, graphql_public, expense, portfolio, nightshift, bookmarks';
+notify pgrst, 'reload config';
+
 -- 1. Vaults Table
 create table if not exists bookmarks.vaults (
   id uuid primary key default gen_random_uuid(),

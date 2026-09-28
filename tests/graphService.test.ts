@@ -1,8 +1,11 @@
-import { describe, expect, it } from 'vitest'
+import { beforeAll, describe, expect, it } from 'vitest'
 import { graphService } from '../src/features/graph/graphService'
 import { vaultStorage } from '../src/lib/storage/vaultStorage'
 
 describe('graphService', () => {
+  beforeAll(() => {
+    vaultStorage.setDemoMode(true)
+  })
   it('loads global graph data with nodes and edges from vault', async () => {
     const { nodes, edges } = await graphService.getGlobalGraphData()
 

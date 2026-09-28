@@ -150,6 +150,11 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
               <HardDrive size={12} className="text-emerald-400" />
               <span className="text-emerald-300">Demo Vault</span>
             </>
+          ) : syncStatus === 'schema_missing' ? (
+            <>
+              <Cloud size={12} className="text-amber-400" />
+              <span className="text-amber-300" title="Supabase 'bookmarks' schema not yet applied in SQL Editor. Using isolated local user vault.">Local (Run Migration)</span>
+            </>
           ) : syncStatus === 'error' ? (
             <>
               <Cloud size={12} className="text-rose-400" />
@@ -158,7 +163,7 @@ export const AppHeader: React.FC<AppHeaderProps> = ({
           ) : (
             <>
               <CheckCircle2 size={12} className="text-emerald-400" />
-              <span className="text-zinc-400">Saved</span>
+              <span className="text-zinc-400">Cloud Synced</span>
             </>
           )}
         </div>

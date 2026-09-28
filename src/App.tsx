@@ -14,6 +14,7 @@ import { ExportModal } from './components/export/ExportModal'
 export const App: React.FC = () => {
   const {
     isAuthenticated,
+    user,
     isLoading: authLoading,
     error: authError,
     isDemoMode,
@@ -49,7 +50,7 @@ export const App: React.FC = () => {
     createFolder,
     deleteFolder,
     refreshVault,
-  } = useVault(isDemoMode)
+  } = useVault(isDemoMode, user?.id)
 
   // Keyboard shortcut listener
   useEffect(() => {
@@ -133,6 +134,19 @@ export const App: React.FC = () => {
         onCreateNewNote={() => createNewNote()}
         onSignOut={signOut}
       />
+
+      {/* Cloud Migration Notice Banner */}
+      {syncStatus === 'schema_missing' && (
+        <div className="bg-amber-950/80 border-b border-amber-800/70 px-4 py-2 text-xs text-amber-200 flex items-center justify-between select-none">
+          <div className="flex items-center gap-2">
+            <span className="font-semibold text-amber-300">Cloud Setup Required:</span>
+            <span>
+              The <code>bookmarks</code> schema is not yet applied or exposed in your Supabase project (PGRST106).
+              Execute <code>supabase/migrations/20260928_init_bookmarks.sql</code> in your Supabase SQL Editor to enable cloud sync. Notes are currently stored in your isolated local vault.
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* Main Workspace Body */}
       <div className="flex-1 flex overflow-hidden">
